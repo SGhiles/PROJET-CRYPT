@@ -3,11 +3,10 @@
 liste=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
 # --- BOUCLE DE VALIDATION DU MODE ---
-mode = input("Voulez-vous (C)hiffrer ou (D)écrypter ? ").upper()
+mode = input("(C)hiffrer ou (D)écrypter ? ").upper()
 
 while mode not in ['C', 'D']:
-    print("Erreur : Veuillez entrer uniquement 'C' pour chiffrer ou 'D' pour décrypter.")
-    mode = input("Voulez-vous (C)hiffrer ou (D)écrypter ? ").upper()
+    mode = input("(C)hiffrer ou (D)écrypter ? ").upper()
 
 # ------------------------------------
 
