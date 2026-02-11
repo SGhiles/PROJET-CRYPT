@@ -23,7 +23,6 @@ def chiffrage_lettre(lettre, liste, clef):
         return ' '
     for i in range(len(liste)):
         if liste[i] == lettre:
-            # On utilise le modulo % 26 pour rester dans les limites de la liste
             return str(liste[(i + clef) % 26])
     return '?'
 
