@@ -1,9 +1,17 @@
 #Projet Final: Chiffrement de fichiers texte#
 
-liste=['a','b','c','d','e','f','g','h','i','j','k','m','n','l','o','p','q','r','s','t','u','v','w','x','y','z']
+liste=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 
+# --- BOUCLE DE VALIDATION DU MODE ---
 mode = input("Voulez-vous (C)hiffrer ou (D)écrypter ? ").upper()
-message = input('Entrez votre message : ').lower() # .lower() pour éviter les bugs avec les majuscules
+
+while mode not in ['C', 'D']:
+    print("Erreur : Veuillez entrer uniquement 'C' pour chiffrer ou 'D' pour décrypter.")
+    mode = input("Voulez-vous (C)hiffrer ou (D)écrypter ? ").upper()
+
+# ------------------------------------
+
+message = input('Entrez votre message : ').lower()
 clef = int(input('Entrez votre clef : '))
 
 # Si on décrypte, on inverse simplement la clé
@@ -15,8 +23,8 @@ def chiffrage_lettre(lettre, liste, clef):
         return ' '
     for i in range(len(liste)):
         if liste[i] == lettre:
-            # En Python, liste[-1] fonctionne et repart de la fin !
-            return str(liste[i + clef])
+            # On utilise le modulo % 26 pour rester dans les limites de la liste
+            return str(liste[(i + clef) % 26])
     return '?'
 
 message_final = ""
