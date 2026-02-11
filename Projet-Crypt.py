@@ -2,23 +2,26 @@
 
 liste=['a','b','c','d','e','f','g','h','i','j','k','m','n','l','o','p','q','r','s','t','u','v','w','x','y','z']
 
-for x in range(len(liste)):
-    liste.append(liste[x])
-
-message = input('Entrez votre message : ')
+mode = input("Voulez-vous (C)hiffrer ou (D)écrypter ? ").upper()
+message = input('Entrez votre message : ').lower() # .lower() pour éviter les bugs avec les majuscules
 clef = int(input('Entrez votre clef : '))
 
+# Si on décrypte, on inverse simplement la clé
+if mode == 'D':
+    clef = -clef
+
 def chiffrage_lettre(lettre, liste, clef):
+    if lettre == ' ':
+        return ' '
     for i in range(len(liste)):
-        if lettre == ' ':
-            return ' '
-        elif liste[i]==lettre:
-            return str(liste[i+clef])
+        if liste[i] == lettre:
+            # En Python, liste[-1] fonctionne et repart de la fin !
+            return str(liste[i + clef])
     return '?'
 
-message_chiffré = str()
+message_final = ""
 
 for lettre in message:
-    message_chiffré += chiffrage_lettre(lettre, liste, clef)
+    message_final += chiffrage_lettre(lettre, liste, clef)
 
-print(message_chiffré)
+print(f"Résultat : {message_final}")
