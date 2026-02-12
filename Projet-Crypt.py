@@ -1,4 +1,4 @@
-# Chiffrement / déchiffrement César sur un fichier texte #
+# Chiffrement et déchiffrement César sur un fichier .txt #
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
