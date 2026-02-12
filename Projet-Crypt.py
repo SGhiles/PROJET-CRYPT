@@ -20,17 +20,17 @@ read.close()
 
 backup = nom_fichier.replace(".txt", "") + "_backup.txt"
 
-backup = open(backup, "w")
-backup.write(texte)   # sauvegarde le contenu lu
+backup = open(backup, "w") # sauvegarde le contenu lu#
+backup.write(texte)   
 backup.close()
 
 resultat = ""
-for car in texte:
-    if car in alphabet:
-        i = alphabet.index(car)
+for elm in texte:
+    if elm in alphabet:
+        i = alphabet.index(elm)
         resultat += alphabet[(i + cle) % 26]
     else:
-        resultat += car
+        resultat += elm
 
 
 write = open(nom_fichier, "w") #ecriture du fichier#
