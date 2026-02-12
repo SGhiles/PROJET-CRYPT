@@ -2,15 +2,15 @@
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-action = input("(C)hiffrer ou (D)écrypter ? ").upper()
-if action != "C" and action != "D":
-    print("Erreur : vous devez taper C ou D.")
-    raise SystemExit
+type = input("(C)hiffrer ou (D)écrypter ? ").upper()
+if type != "C" and type != "D":
+    print("Erreur : vous devez taper C ou D. ")
+    exit
 
 nom_fichier = input("Nom du fichier a modifier (.txt) : ")
 
 cle = int(input("Entrez une clef (1-25): "))
-if action == "D":
+if type == "D":
     cle = -cle
 
 
