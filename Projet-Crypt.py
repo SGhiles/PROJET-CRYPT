@@ -18,6 +18,12 @@ read = open(nom_fichier, "r") #lecture du ficher#
 texte = read.read().lower()
 read.close()
 
+backup = nom_fichier.replace(".txt", "") + "_backup.txt"
+
+backup = open(backup, "w")
+backup.write(texte)   # sauvegarde le contenu lu
+backup.close()
+
 resultat = ""
 for car in texte:
     if car in alphabet:
