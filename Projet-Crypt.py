@@ -1,34 +1,34 @@
-# Chiffrement / déchiffrement César sur un fichier texte (version simple)
+# Chiffrement / déchiffrement César sur un fichier texte #
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-mode = input("(C)hiffrer ou (D)écrypter ? ").upper()
-while mode != "C" and mode != "D":
-    mode = input("(C)hiffrer ou (D)écrypter ? ").upper()
+action = input("(C)hiffrer ou (D)écrypter ? ").upper()
+if action != "C" and action != "D":
+    print("Erreur : vous devez taper C ou D.")
+    raise SystemExit
 
-nom_fichier = input("Nom du fichier à modifier (.txt) : ")
+nom_fichier = input("Nom du fichier a modifier (.txt) : ")
 
-clef = int(input("Entrez votre clef (1-25): "))
-if mode == "D":
-    clef = -clef
+cle = int(input("Entrez une clef (1-25): "))
+if action == "D":
+    cle = -cle
 
-try:
-    with open(nom_fichier, "r", encoding="utf-8") as f:
-        texte = f.read().lower()
 
-    resultat = ""
-    for car in texte:
-        if car in alphabet:
-            i = alphabet.index(car)
-            resultat += alphabet[(i + clef) % 26]
-        else:
-            resultat += car  # garde espaces, ponctuation, chiffres, etc.
+read = open(nom_fichier, "r") #lecture du ficher#
+texte = read.read().lower()
+read.close()
 
-    with open(nom_fichier, "w", encoding="utf-8") as f:
-        f.write(resultat)
+resultat = ""
+for car in texte:
+    if car in alphabet:
+        i = alphabet.index(car)
+        resultat += alphabet[(i + cle) % 26]
+    else:
+        resultat += car
 
-    print("Fichier modifié avec succès !")
 
-except FileNotFoundError:
-    print("Erreur : fichier introuvable.")
-    
+write = open(nom_fichier, "w") #ecriture du fichier#
+write.write(resultat)
+write.close()
+
+print("Succès !")
